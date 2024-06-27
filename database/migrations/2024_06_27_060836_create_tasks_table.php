@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('title');
+            $table->integer('priority');
             $table->dateTime('deadline');
             $table->boolean('is_done')->default(false);
             $table->timestamps();

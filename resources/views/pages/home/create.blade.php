@@ -2,8 +2,7 @@
 @section('contents')
     <div id="content">
         <div class="container">
-            <form class="form content-padding" method="POST" action="{{ url('/task/store') }}"
-                enctype="multipart/form-data">
+            <form class="form content-padding" method="POST" action="{{ url('/task/store') }}" enctype="multipart/form-data">
                 @csrf
 
                 <div class="card card-custom shadow pb-5 mt-10 rounded">
@@ -35,10 +34,19 @@
                         </div>
                         <div class="form-group row align-items-center mt-2">
                             <div class="col-lg-3">
+                                <h6 class="font-weight-bold">Priority <span class="text-danger">*</span></h6>
+                            </div>
+                            <div class="col-lg-9">
+                                <input type="number" name="priority" class="form-control" placeholder="Enter task priority"
+                                    required />
+                            </div>
+                        </div>
+                        <div class="form-group row align-items-center mt-2">
+                            <div class="col-lg-3">
                                 <h6 class="font-weight-bold">Status <span class="text-danger">*</span></h6>
                             </div>
                             <div class="col-lg-9">
-                                <select class="form-control select-status" name="is_done" required>
+                                <select class="form-control" name="is_done" required>
                                     <option></option>
                                     <option value="0">On Progress</option>
                                     <option value="1">Done</option>

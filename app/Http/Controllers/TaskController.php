@@ -20,6 +20,7 @@ class TaskController extends Controller
         $validator = Validator::make($request->all(), [
             'deadline' => 'required|date',
             'title' => 'required|string|max:255',
+            'priority' => 'required|int',
             'is_done.*' => 'required|boolean'
         ]);
 
@@ -34,6 +35,7 @@ class TaskController extends Controller
                 'deadline' => Carbon::parse($request->deadline),
                 'user_id' => auth()->user()->id,
                 'title' => $request->title,
+                'priority' => $request->priority,
                 'is_done' => $request->is_done
             ]);
 
