@@ -103,6 +103,7 @@
                     <div class="d-flex flex-column justify-content-center align-items-center">
                         <img src="{{ asset('img/check.png') }}" alt="" class="icon-modal my-2">
                         <h4 class="modal-message text-center"></h4>
+                        <h4 class="text-center">Please wait...</h4>
                     </div>
                 </div>
             </div>
@@ -229,11 +230,13 @@
                         $('#successModal .modal-title').text('Success');
                         $('#successModal .modal-message').html('<p>Register successful!</p>');
                         $('#successModal').modal('show');
-                        if (response.redirect_url) {
-                            window.location.href = response.redirect_url;
-                        } else {
-                            window.location.href = '/auth/login';
-                        }
+                        setTimeout(function() {
+                            if (response.redirect_url) {
+                                window.location.href = response.redirect_url;
+                            } else {
+                                window.location.href = '/auth/login';
+                            }
+                        }, 2000);
                     } else {
                         $('#errorModal .modal-title').text('Error');
                         $('#errorModal .modal-message').html('<p>' + response.message + '</p>');

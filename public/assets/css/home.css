@@ -80,7 +80,7 @@ body {
 }
 
 .vertical-line {
-    border-left: 2px solid black;
+    border-left: 1px solid #969696;
     height: 50px;
 }
 

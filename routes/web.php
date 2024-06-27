@@ -30,4 +30,13 @@ Route::namespace('App\Http\Controllers')->group(static function () {
             });
         }
     );
+
+    Route::prefix('task')->name('task.')->group(
+        static function () {
+            Route::middleware('auth')->group(static function () {
+                Route::get('/create', 'App\Http\Controllers\TaskController@create');
+                Route::post('/store', 'App\Http\Controllers\TaskController@store');
+            });
+        }
+    );
 });
