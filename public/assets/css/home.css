@@ -110,3 +110,8 @@ body {
 .no-style-text {
     text-decoration: none;
 }
+
+.slick-prev:before,
+.slick-next:before {
+    color: var(--baseBlue) !important;
+}

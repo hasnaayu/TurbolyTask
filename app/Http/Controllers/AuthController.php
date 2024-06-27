@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -87,6 +88,19 @@ class AuthController extends Controller
                 'success' => false,
                 'message' => 'Oops! Something wrong! Code : ' . $exception->getMessage()
             ]);
+        }
+    }
+
+    public function logout()
+    {
+        try {
+            Session::flush();
+
+            Auth::logout();
+
+            return redirect('/');
+        } catch (\Exception $exception) {
+            return redirect('/home');
         }
     }
 }

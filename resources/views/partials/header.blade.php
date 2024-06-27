@@ -20,7 +20,7 @@
                             {{ Auth::user()->name }}
                         </div>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu3">
-                            <a class="dropdown-item" href="/auth/logout">Keluar</a>
+                            <a class="dropdown-item" href="/auth/logout">Logout</a>
                         </div>
                     </div>
                 </div>
