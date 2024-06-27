@@ -79,43 +79,6 @@
             }
         }
 
-        $(document).ready(function() {
-            var substringMatcher = function(strs) {
-                return function findMatches(q, cb) {
-                    var matches, substringRegex;
-
-                    matches = [];
-
-                    substrRegex = new RegExp(q, 'i');
-
-                    $.each(strs, function(i, str) {
-                        if (substrRegex.test(str)) {
-                            matches.push(str);
-                        }
-                    });
-
-                    cb(matches);
-                };
-            };
-            var response = new Bloodhound({
-                datumTokenizer: Bloodhound.tokenizers.whitespace,
-                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                remote: {
-                    url: window.location.origin + '/home/task/autocomplete?search=%QUERY',
-                    wildcard: '%QUERY'
-                }
-            });
-
-            $('#search').typeahead({
-                hint: true,
-                highlight: true,
-                minLength: 1
-            }, {
-                name: 'response',
-                source: response
-            });
-        });
-
         $('.scroll_container').slick({
             autoplay: true,
             autoplaySpeed: 2000,
@@ -161,6 +124,64 @@
             todayHighlight: true,
             autoclose: true
         });
+
+        $('#search').keypress(function(e) {
+            if (e.which === 13) {
+                e.preventDefault();
+                var search_val = $("input[name='search_field_web']").val();
+                window.location.href =
+                    `/home?keyword=${search_val}`;
+            }
+        });
+
+        $('#search_web').click(function(e) {
+            var search_val = $("input[name='search_field_web']").val();
+            window.location.href =
+                `/home?keyword=${search_val}`;
+        });
+
+        $('#filter_all').click(function(e) {
+            var search_val = $("input[name='search_field_web']").val();
+            var deadline_val = $("select[id='order-by-deadline']").val();
+            var title_val = $("select[id='order-by-title']").val();
+            var priority_val = $("select[id='order-by-priority']").val();
+            window.location.href =
+                `/home?keyword=${search_val}&order_by_deadline=${deadline_val}&order_by_title=${title_val}&order_by_priority=${priority_val}`;
+        });
+
+        $('#reset').click(function(e) {
+            window.location.href =
+                `/home`;
+        })
+
+        $('#search_dltoday').keypress(function(e) {
+            if (e.which === 13) {
+                e.preventDefault();
+                var search_val = $("input[name='search_field_dltoday']").val();
+                window.location.href =
+                    `/task/deadline-today?keyword=${search_val}`;
+            }
+        });
+
+        $('#search_dltoday_web').click(function(e) {
+            var search_val = $("input[name='search_field_dl_today']").val();
+            window.location.href =
+                `/task/deadline-today?keyword=${search_val}`;
+        });
+
+        $('#filter_all_today').click(function(e) {
+            var search_val = $("input[name='search_field_dltoday']").val();
+            var deadline_val = $("select[id='order-by-deadline-today']").val();
+            var title_val = $("select[id='order-by-title-today']").val();
+            var priority_val = $("select[id='order-by-priority-today']").val();
+            window.location.href =
+                `/task/deadline-today?keyword=${search_val}&order_by_deadline=${deadline_val}&order_by_title=${title_val}&order_by_priority=${priority_val}`;
+        });
+
+        $('#reset_today').click(function(e) {
+            window.location.href =
+                `/task/deadline-today`;
+        })
     </script>
 </body>
 

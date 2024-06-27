@@ -1,6 +1,9 @@
 :root {
     --baseBlue: #58B0E2;
     --lightBlue: #abd4fe;
+    --lightestBlue: #ecf5ff;
+    --lightYellow: #FFFFCC;
+    --lightGrey: #f8f8f8;
 }
 
 @keyframes scroll {
@@ -71,6 +74,7 @@ body {
     color: var(--baseBlue);
     padding: 0.5rem 2rem;
     font-size: larger;
+    cursor: pointer;
 }
 
 .btn-outline-primary:hover {
@@ -114,4 +118,16 @@ body {
 .slick-prev:before,
 .slick-next:before {
     color: var(--baseBlue) !important;
+}
+
+.bg_done {
+    background-color: var(--lightestBlue) !important;
+}
+
+.bg_progress {
+    background-color: var(--lightYellow) !important;
+}
+
+.bg_expired {
+    background-color: var(--lightGrey) !important;
 }

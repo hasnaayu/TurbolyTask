@@ -35,7 +35,12 @@ Route::namespace('App\Http\Controllers')->group(static function () {
         static function () {
             Route::middleware('auth')->group(static function () {
                 Route::get('/create', 'App\Http\Controllers\TaskController@create');
+                Route::get('/edit/{id}', 'App\Http\Controllers\TaskController@edit');
                 Route::post('/store', 'App\Http\Controllers\TaskController@store');
+                Route::put('/update/{id}', 'App\Http\Controllers\TaskController@update');
+                Route::get('/deadline-today', 'App\Http\Controllers\TaskController@deadlineToday');
+                Route::get('/is-done/{id}', 'App\Http\Controllers\TaskController@isDoneTask');
+                Route::get('/delete/{id}', 'App\Http\Controllers\TaskController@delete');
             });
         }
     );
