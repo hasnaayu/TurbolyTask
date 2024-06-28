@@ -220,7 +220,7 @@
                 <hr>
                 <div class="my-5">
                     <div
-                        class="font-size-h2-xl font-size-h3-lg font-size-h4-md font-size-h5-sm font-size-h5 font-weight-bold my-4 text-info">
+                        class="font-size-h2-xl font-size-h3-lg font-size-h4-md font-size-h5-sm font-size-h5 font-weight-bold my-4">
                         Expired Deadline
                     </div>
 
