@@ -1,7 +1,7 @@
 :root {
-  --blue: #58B0E2;
-  --lightBlue: #abd4fe;
-  }
+    --blue: #58B0E2;
+    --lightBlue: #abd4fe;
+}
 
 html {
     font-family: sans-serif;
@@ -44,7 +44,7 @@ body {
     border-color: var(--blue) !important;
 }
 
-.text-primary{
+.text-primary {
     color: var(--blue) !important;
 }
 
@@ -99,8 +99,36 @@ body {
     margin-bottom: 1.75rem !important;
 }
 
-.w-350px {
-    width: 350px !important;
+.w-xl-350px {
+    min-width: 500px !important;
+}
+
+.w-lg-350px {
+    min-width: 500px !important;
+}
+
+.w-md-350px {
+    min-width: 500px !important;
+}
+
+.w-sm-180px {
+    min-width: 200px !important;
+}
+
+.max-h-xl-120px {
+    max-height: 120px !important;
+}
+
+.max-h-lg-120px {
+    max-height: 120px !important;
+}
+
+.max-h-md-120px {
+    max-height: 120px !important;
+}
+
+.max-h-sm-60px {
+    max-height: 60px !important;
 }
 
 .py-4 {
@@ -183,7 +211,7 @@ body {
     border-radius: 0.5rem !important;
 }
 
-.no-style-text{
+.no-style-text {
     text-decoration: none;
 }
 
@@ -195,6 +223,11 @@ body {
     border-top: 0 none !important;
 }
 
-.icon-modal{
-    width: 5rem;
+.icon-modal {
+    max-width: 5rem;
+}
+
+.modal-footer {
+    display: flex !important;
+    justify-content: center !important;
 }

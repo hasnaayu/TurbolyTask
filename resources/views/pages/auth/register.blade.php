@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <link href="{{ asset('assets/css/auth.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -19,28 +20,31 @@
 </head>
 
 <body>
-    <div class="d-flex flex-column flex-root">
+    <div class="d-flex flex-column flex-root display-desktop">
         <div class="d-flex flex-row-fluid">
             <div class="d-flex flex-center flex-row-fluid bg-size-cover bg-position-center bg-no-repeat">
                 <div class="d-flex flex-column align-items-center">
                     <div class="d-flex flex-center mb-2">
-                        <img src="{{ asset('img/logo.png') }}" class="max-h-80px" alt="" />
+                        <img src="{{ asset('img/logo.png') }}" class="max-h-xl-120px max-h-lg-120px max-h-md-120px max-h-sm-60px" alt="" />
                     </div>
 
                     <div class="my-2">
-                        <h2 class="font-weight-boldest">Register to TurbolyTask!</h2>
+                        <p class="font-size-h1-xl font-size-h2-lg font-size-h3-md font-size-h4-sm font-weight-boldest">
+                            Register to TurbolyTask!</p>
                     </div>
                     <div class="card card-custom p-10 bg-white border-card">
 
                         <form class="form" id="registForm">
                             <div class="form-group mb-3 text-center">
-                                <input class="form-control form-control-solid py-3 px-8 w-350px bg-white border-form"
+                                <input
+                                    class="form-control form-control-solid py-xl-4 px-xl-4 py-lg-3 px-lg-8 py-md-2 px-md-2 py-sm-2 px-sm-2 w-xl-350px w-lg-350px w-md-350px w-sm-180px bg-white border-form"
                                     type="text" placeholder="Name" name="name" id="name" autocomplete="off"
                                     required>
                                 <div id="nameError" class="invalid-feedback"></div>
                             </div>
                             <div class="form-group mb-3 text-center">
-                                <input class="form-control form-control-solid py-3 px-8 w-350px bg-white border-form"
+                                <input
+                                    class="form-control form-control-solid py-xl-4 px-xl-4 py-lg-3 px-lg-8 py-md-2 px-md-2 py-sm-2 px-sm-2 w-xl-350px w-lg-350px w-md-350px w-sm-180px bg-white border-form"
                                     type="text" placeholder="Email" name="email" id="email" autocomplete="off"
                                     required />
                                 <div id="emailError" class="invalid-feedback"></div>
@@ -48,7 +52,7 @@
                             <div class="form-group mb-3 text-center">
                                 <div class="input-icon input-icon-right">
                                     <input
-                                        class="form-control form-control-solid py-3 px-8 w-350px bg-white border-form"
+                                        class="form-control form-control-solid py-xl-4 px-xl-4 py-lg-3 px-lg-8 py-md-2 px-md-2 py-sm-2 px-sm-2 w-xl-350px w-lg-350px w-md-350px w-sm-180px bg-white border-form"
                                         type="password" placeholder="Password" id="password" name="password"
                                         required />
                                     <span><i class="fas fa-eye" style="cursor: pointer" id="password_icon"></i></span>
@@ -58,7 +62,7 @@
                             <div class="form-group mb-5 text-center">
                                 <div class="input-icon input-icon-right">
                                     <input
-                                        class="form-control form-control-solid py-3 px-8 w-350px bg-white border-form"
+                                        class="form-control form-control-solid py-xl-4 px-xl-4 py-lg-3 px-lg-8 py-md-2 px-md-2 py-sm-2 px-sm-2 w-xl-350px w-lg-350px w-md-350px w-sm-180px bg-white border-form"
                                         type="password" placeholder="Konfirmasi Password" id="conf_password"
                                         name="conf_password" required />
                                     <span><i class="fas fa-eye" style="cursor: pointer"
@@ -85,11 +89,13 @@
                 <div class="modal-body">
                     <div class="d-flex flex-column justify-content-center align-items-center">
                         <img src="{{ asset('img/times.png') }}" alt="" class="icon-modal my-2">
-                        <h4 class="modal-message text-center"></h4>
+                        <p
+                            class="modal-message text-center font-size-h3-xl font-size-h4-lg font-size-h4-md font-size-h5-sm">
+                        </p>
                     </div>
                 </div>
-                <div class="modal-footer justify-content-center">
-                    <button type="button" class="btn btn-primary mr-auto px-5" data-bs-dismiss="modal">OK</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary px-5" data-bs-dismiss="modal">OK</button>
                 </div>
             </div>
         </div>
@@ -102,8 +108,11 @@
                 <div class="modal-body">
                     <div class="d-flex flex-column justify-content-center align-items-center">
                         <img src="{{ asset('img/check.png') }}" alt="" class="icon-modal my-2">
-                        <h4 class="modal-message text-center"></h4>
-                        <h4 class="text-center">Please wait...</h4>
+                        <p
+                            class="modal-message text-center font-size-h3-xl font-size-h4-lg font-size-h4-md font-size-h5-sm">
+                        </p>
+                        <p class="text-center font-size-h3-xl font-size-h4-lg font-size-h4-md font-size-h5-sm">Please
+                            wait...</p>
                     </div>
                 </div>
             </div>
@@ -247,7 +256,7 @@
                     console.error('AJAX Error:', status, error);
                     $('#errorModal .modal-title').text('Error');
                     $('#errorModal .modal-message').html(
-                        '<p>Failed to process your request. Please try again later.</p>');
+                        '<p>Please fill register form correctly!</p>');
                     $('#errorModal').modal('show');
                 },
                 dataType: 'json'
