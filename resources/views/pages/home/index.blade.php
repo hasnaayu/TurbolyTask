@@ -35,20 +35,24 @@
                 <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
                     <label for="order-by-title">Order by Title:</label>
                     <select id="order-by-title" class="form-select">
-                        <option value="" {{ Request::get('order_by_title') == ' ' ? 'selected' : ' ' }}></option>
-                        <option value="asc" {{ Request::get('order_by_title') == 'asc' ? 'selected' : '' }}>A-Z</option>
-                        <option value="desc" {{ Request::get('order_by_title') == 'desc' ? 'selected' : '' }}>Z-A</option>
+                        <option value="" {{ request()->get('order_by_title') == ' ' ? 'selected' : ' ' }}></option>
+                        <option value="asc" {{ request()->get('order_by_title') == 'asc' ? 'selected' : '' }}>A-Z
+                        </option>
+                        <option value="desc" {{ request()->get('order_by_title') == 'desc' ? 'selected' : '' }}>Z-A
+                        </option>
                     </select>
                 </div>
 
                 <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
                     <label for="order-by-priority">Order by Priority:</label>
-                    <select id="order-by-priority" class="form-select">
+                    <select id="order-by-priority" class="form-select" value={{ request()->get('order_by_priority') }}>
                         <option value="" {{ Request::get('order_by_priority') == ' ' ? 'selected' : '' }}></option>
-                        <option value="asc" {{ Request::get('order_by_priority') == 'asc' ? 'selected' : '' }}>Lowest
-                            Priority First</option>
-                        <option value="desc" {{ Request::get('order_by_priority') == 'desc' ? 'selected' : '' }}>Highest
-                            Priority First</option>
+                        <option value="low" {{ Request::get('order_by_priority') == 'low' ? 'selected' : '' }}>Lowest
+                            Priority</option>
+                        <option value="med" {{ Request::get('order_by_priority') == 'med' ? 'selected' : '' }}>Medium
+                            Priority</option>
+                        <option value="high" {{ Request::get('order_by_priority') == 'high' ? 'selected' : '' }}>Highest
+                            Priority</option>
                     </select>
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12">

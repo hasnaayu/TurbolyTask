@@ -9,46 +9,6 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    // public function index(Request $request)
-    // {
-    //     if (isset($request->keyword) && $request->order_by_deadline != '' && $request->order_by_title != '' && $request->order_by_priority != '') {
-    //         $deadline_today = Task::where('deadline', Carbon::today())
-    //             ->where('title', 'like', '%' . $request->keyword . '%')
-    //             ->orderBy('deadline', $request->order_by_deadline)
-    //             ->orderBy('title', $request->order_by_title)
-    //             ->orderBy('priority', $request->order_by_priority)
-    //             ->get();
-    //         $tasks = Task::where('deadline', '>', Carbon::today())
-    //             ->where('title', 'like', '%' . $request->keyword . '%')
-    //             ->orderBy('deadline', $request->order_by_deadline)
-    //             ->orderBy('title', $request->order_by_title)
-    //             ->orderBy('priority', $request->order_by_priority)
-    //             ->paginate(5);
-    //         $expired = Task::where('deadline', '<', Carbon::today())
-    //             ->where('title', 'like', '%' . $request->keyword . '%')
-    //             ->orderBy('deadline', $request->order_by_deadline)
-    //             ->orderBy('title', $request->order_by_title)
-    //             ->orderBy('priority', $request->order_by_priority)
-    //             ->paginate(5);
-    //     } else {
-    //         $deadline_today = Task::orderBy('priority', 'ASC')
-    //             ->where('deadline', Carbon::today())
-    //             ->get();
-    //         $tasks = Task::orderBy('created_at', 'DESC')
-    //             ->where('deadline', '>', Carbon::today())
-    //             ->paginate(5);
-    //         $expired = Task::orderBy('created_at', 'DESC')
-    //             ->where('deadline', '<', Carbon::today())
-    //             ->paginate(5);
-    //     }
-    //     return view('pages.home.index', [
-    //         'tasks' => $tasks,
-    //         'deadline_today' => $deadline_today,
-    //         'expired' => $expired,
-    //         'title' => 'Home Page'
-    //     ]);
-    // }
-
     public function index(Request $request)
     {
         $queryToday = Task::whereDate('deadline', Carbon::today());
@@ -73,10 +33,22 @@ class HomeController extends Controller
             $queryExpired->orderBy('title', $request->order_by_title);
         }
 
-        if ($request->order_by_priority) {
-            $queryToday->orderBy('priority', $request->order_by_priority);
-            $queryFuture->orderBy('priority', $request->order_by_priority);
-            $queryExpired->orderBy('priority', $request->order_by_priority);
+        if ($request->order_by_priority == 'low') {
+            $queryToday->where('priority', '<=', 2);
+            $queryFuture->where('priority', '<=', 2);
+            $queryExpired->where('priority', '<=', 2);
+        } elseif ($request->order_by_priority == 'med') {
+            $queryToday->where('priority', '>', 2)->orWhere('priority', '<', 10);
+            $queryFuture->where('priority', '>', 2)->orWhere('priority', '<', 10);
+            $queryExpired->where('priority', '>', 2)->orWhere('priority', '<', 10);
+        } elseif ($request->order_by_priority == 'high') {
+            $queryToday->where('priority', '>=', 10);
+            $queryFuture->where('priority', '>=', 10);
+            $queryExpired->where('priority', '>=', 10);
+        } else {
+            $queryToday->get();
+            $queryFuture->paginate(5);
+            $queryExpired->paginate(5);
         }
 
         $deadline_today = $queryToday->get();
